@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Cek Usia</title>
+    <style>
+        /* clearing */
+        html, body, :root {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gradient1: linear-gradient(102.4deg, rgba(253, 189, 85, 1) 7.8%, rgba(249, 131, 255, 1) 100.3%);
+            --gradient2: linear-gradient(109.6deg, rgba(61, 245, 167, 1) 11.2%, rgba(9, 111, 224, 1) 91.1%);
+        }
+
+        body {
+            background-color: #eaeaea;
+            background-image: var(--gradient1);
+            background-size: 200%;
+            animation: gradient-animation 15s infinite alternate;
+            display: flex;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        @keyframes gradient-animation {
+            0% {
+                background-position: left;
+            }
+
+            100% {
+                background-position: right;
+            }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 2px solid black;
+            background-color: #eaeaea;
+            background-image: var(--gradient2);
+            background-size: 200%;
+            animation: gradient-animation 15s infinite alternate;
+            border-radius: 8%;
+            margin: 120px auto;
+            padding: 16px;
+            width: 500px;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        #birthday {
+            padding: 16px;
+            font-size: 18px;
+        }
+
+        #check-button {
+            padding: 12px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #check-button:hover {
+            background-color: black;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        h1 {
+            text-align: center;
+            background-image: var(--gradient2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-size: 200%;
+            color: transparent;
+            /* text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7); */
+            filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.7));
+        }
+
+        h1:hover {
+            cursor: pointer;
+            animation: gradient-animation 5s infinite alternate;
+        }
+
+        .result {
+            font-size: 18px;
+            color: black;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                min-width: 500px;
+            }
+        }
+
+        @media (max-width: 477px) {
+            .container {
+                min-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Cek Usia Anda</h1>
+        <label>Masukkan tahun kelahiran anda</label>
+        <input type="number" placeholder="contoh : 1945" id="birthday"/>
+        <button id="check-button" onclick="checkResult()">Cek Usia</button>
+        <p class="result" id="resultView">
+            <!-- otomatis hasil akan masuk kesini -->
+        </p>
+    </div>
+
+    <script>
+        function checkResult () {
+            const birthdayInput = document.getElementById("birthday");
+            const birthday = birthdayInput.value;
+
+            const now = new Date().getFullYear(); //variable now sudah bernilai tahun saat ini secara otomatis
+            const age = now - birthday;
+
+            const resultView = document.getElementById("resultView");
+            resultView.innerHTML = `Usia anda saat ini adalah ${age} tahun`;
+        }
+    </script>
+</body>
+</html>
